@@ -4,14 +4,13 @@ const UserModel = mongoose.model("users", UserSchema)
 const bcrypt = require("bcrypt")
 mongoose
   .connect("mongodb://127.0.0.1:27017/munchkinDB")
-  .then((res) => {})
-  .catch((e) => console.log(e))
+  .then(res => {})
+  .catch(e => console.log(e))
 
 class UserControler {
   async create(req, res) {
     const { email, password } = req.body
     
-
     if (email == "" || password == "") {
       res.sendStatus(400)
       return
@@ -33,8 +32,20 @@ class UserControler {
       }
   }
 
-  async login(req, res) {
-    const { email, password } = req.body
+  async delete(req, res) {
+    const {email} = req.params
+    try{
+      await UserModel.findOneAndDelete({email: email})
+      res.sendStatus(200)
+    }catch(e){ 
+      console.log(e);
+    }
+  }
+
+  async login(req, res){ 
+    const {email, password} = req.body
+
+    
   }
 }
 
