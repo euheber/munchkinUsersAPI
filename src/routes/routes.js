@@ -6,6 +6,7 @@ const router = express.Router()
 
 router.get("/", HomeControler.index)
 router.post("/user", UserControler.create)
+router.post("/login", UserControler.login)
 router.delete("/user/:email", UserControler.delete)
 
 module.exports = router

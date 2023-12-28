@@ -40,6 +40,4 @@ describe("Authentication", () => {
     resolve()
     }, 4000));
   })
-
-
 })
